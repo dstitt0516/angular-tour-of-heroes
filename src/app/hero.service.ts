@@ -23,6 +23,10 @@ export class HeroService {
  * @param result - optional value to return as the observable result
  */
 
+
+  
+  /** Data Retrieval Methods */
+
   getHeroes(): Observable<Hero[]> {
   return this.http.get<Hero[]>(this.heroesUrl)
     .pipe(
@@ -34,7 +38,8 @@ export class HeroService {
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url)
-      .pipe( tap(_ => this.log(`fetched hero id=${id}`)),
+      .pipe( 
+        tap(_ => this.log(`fetched hero id=${id}`)),
         catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
@@ -61,8 +66,7 @@ export class HeroService {
 
   searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
-    // if not search term, return empty hero array.
-      return of([]);
+      return of([]); /** if not search term, return empty hero array. */
     }
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
       .pipe(
@@ -74,12 +78,11 @@ export class HeroService {
           }
         }),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
-    );
+      );
   }
 
-// ------------------------------------------------------------------
+  /** Data Modification Methods */
 
-    /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions)
       .pipe(
@@ -105,6 +108,8 @@ export class HeroService {
       );
   }
 
+  /** Handle Http operation that failed. */
+
   private handleError<hero>(operation = 'operation', result?: hero) {
     return (error: any): Observable<hero> => {
       console.error(error);
@@ -113,9 +118,10 @@ export class HeroService {
     };
   }
 
-// ------------------------------------------------------------------
+  /** Log a HeroService message with the MessageService */
 
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
+
 }
