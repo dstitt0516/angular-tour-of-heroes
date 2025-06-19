@@ -25,10 +25,7 @@ export class InMemoryDataService implements InMemoryDbService {
   genId(heroes: Hero[]): number {
     if (heroes.length > 0) {
       return Math.max(...heroes.map(hero => hero.id)) + 1
-    } else if (false) {
-        return 11;
     }
-
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+    return 11;
   }
 }
