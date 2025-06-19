@@ -53,9 +53,10 @@ export class HeroService {
       .pipe(
         map(heroes => heroes[0]),
         tap(hero => {
-          if(hero) {
+          if (typeof hero === 'object' && hero !== null) {
               outcome = 'fetched';
-          } else if(!hero) {
+          } 
+          else {
               outcome = 'did not find'; 
           }
           this.log(`${outcome} hero id=${id}`);
@@ -65,16 +66,18 @@ export class HeroService {
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
-    if (!term.trim()) {
-      return of([]); /** if not search term, return empty hero array. */
+    const trimmedName = term?.trim()?? '';
+    if (trimmedName === '') {
+      return of([]);
     }
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
       .pipe(
         tap( hero => {
-          if (hero.length) {
+          if (Array.isArray(hero) && hero.length > 0) {
             this.log(`found heroes matching "${term}"`)
-          } else if (!hero.length) {
-          this.log(`no heroes matching "${term}"`)
+          } 
+          else {
+            this.log(`no heroes matching "${term}"`)
           }
         }),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
@@ -123,5 +126,4 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
-
 }
