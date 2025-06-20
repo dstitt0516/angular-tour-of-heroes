@@ -29,7 +29,6 @@ export class HeroesComponent implements OnInit {
   }
 
   add(name: string): void {
-    name = name.trim();
     if (typeof name !== 'string' || name.length < 1 || name.length > 10) { 
       return
     }
