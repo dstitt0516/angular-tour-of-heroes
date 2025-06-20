@@ -38,7 +38,12 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    if (this.hero) {
+    if (
+      typeof this.hero === 'object' && 
+      typeof this.hero.id === 'number' && 
+      typeof this.hero.name === 'string' && 
+      this.hero !== null
+    ) {
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
     }
