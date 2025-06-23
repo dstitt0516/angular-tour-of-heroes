@@ -42,7 +42,9 @@ export class HeroDetailComponent implements OnInit {
       typeof this.hero === 'object' && 
       typeof this.hero.id === 'number' && 
       typeof this.hero.name === 'string' && 
-      this.hero !== null
+      this.hero !== null &&
+      this.hero.name.length <= 10 &&
+      this.hero.name.length > 0
     ) {
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());

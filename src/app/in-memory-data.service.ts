@@ -1,6 +1,7 @@
 import { importProvidersFrom, Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 18, name: 'Dr. IQ' },
       { id: 19, name: 'Magma' },
       { id: 20, name: 'Tornado' }
-    ];
+    ]; 
     return {heroes};
   }
 
