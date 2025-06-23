@@ -22,21 +22,20 @@ export class HeroService {
  * @param operation - name of the operation that failed
  * @param result - optional value to return as the observable result
  */
-
-
   
   /** Data Retrieval Methods */
 
   getHeroes(): Observable<Hero[]> {
-  return this.http.get<Hero[]>(this.heroesUrl)
-    .pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError<Hero[]>('getHeroes', []))
-    );
-  }
+    return this.http.get<Hero[]>(this.heroesUrl)
+      .pipe(
+        tap(_ => this.log('fetched heroes')),
+        catchError(this.handleError<Hero[]>('getHeroes', []))
+      );
+    }
 
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
+
     return this.http.get<Hero>(url)
       .pipe( 
         tap(_ => this.log(`fetched hero id=${id}`)),
@@ -48,15 +47,15 @@ export class HeroService {
 
   getHeroNo404<Data>(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/?id=${id}`;
-    var outcome: string;
+    let outcome: string;
+
     return this.http.get<Hero[]>(url)
       .pipe(
         map(heroes => heroes[0]),
         tap(hero => {
           if (typeof hero === 'object' && hero !== null) {
               outcome = 'fetched';
-          } 
-          else {
+          } else {
               outcome = 'did not find'; 
           }
           this.log(`${outcome} hero id=${id}`);
@@ -66,17 +65,18 @@ export class HeroService {
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
-    const trimmedName = term?.trim()?? '';
+    const trimmedName = term?.trim() ?? '';
+
     if (trimmedName === '') {
       return of([]);
     }
+
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
       .pipe(
         tap( hero => {
           if (Array.isArray(hero) && hero.length > 0) {
             this.log(`found heroes matching "${term}"`)
-          } 
-          else {
+          } else {
             this.log(`no heroes matching "${term}"`)
           }
         }),
@@ -86,11 +86,11 @@ export class HeroService {
 
   /** Data Modification Methods */
 
-  updateHero(hero: Hero): Observable<any> {
+  updateHero(hero: Hero): Observable<Object> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions)
       .pipe(
         tap(_ => this.log(`updated hero id=${hero.id}`)),
-        catchError(this.handleError<any>('updateHero'))
+        catchError(this.handleError<Object>('updateHero'))
       );
   }
 
@@ -104,6 +104,7 @@ export class HeroService {
 
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
+
     return this.http.delete<Hero>(url, this.httpOptions)
       .pipe(
         tap(_ => this.log(`deleted hero id=${id}`)),

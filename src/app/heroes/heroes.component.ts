@@ -30,8 +30,9 @@ export class HeroesComponent implements OnInit {
 
   add(name: string): void {
     if (typeof name !== 'string' || name.length < 1 || name.length > 10) { 
-      return
+      return;
     }
+    
     this.heroService.addHero({ name } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);

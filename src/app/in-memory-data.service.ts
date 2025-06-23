@@ -11,22 +11,22 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const heroes = [
-      { id: 12, name: 'Dr. Nice' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr. IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { id: 12, city: 'Altoona', name: 'Dr. Nice' },
+      { id: 13, city: 'Reading', name: 'Bombasto' },
+      { id: 14, city: 'Altoona', name: 'Celeritas' },
+      { id: 15, city: 'Pittsburgh', name: 'Magneta' },
+      { id: 16, city: 'Reading', name: 'RubberMan' },
+      { id: 17, city: 'Allentown', name: 'Dynama' },
+      { id: 18, city: 'Johnstown', name: 'Dr. IQ' },
+      { id: 19, city: 'Altoona', name: 'Magma' },
+      { id: 20, city: 'Pittsburgh', name: 'Tornado' }
     ]; 
     return {heroes};
   }
 
   genId(heroes: Hero[]): number {
     if (heroes.length > 0) {
-      return Math.max(...heroes.map(hero => hero.id)) + 1
+      return Math.max(...heroes.map(hero => hero.id)) + 1;
     }
     return 11;
   }
