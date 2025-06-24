@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { City, Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
 import { NgIf, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +16,8 @@ import { Location } from '@angular/common';
 export class HeroDetailComponent implements OnInit {
   
   hero: Hero | undefined;
+  cities: City[] = [];
+  city: City | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +34,10 @@ export class HeroDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe((hero)=> {
+        this.hero = hero 
+        this.heroService.getCity(hero.cityid).subscribe(city => this.city = city);
+      });
   }
 
   goBack(): void {

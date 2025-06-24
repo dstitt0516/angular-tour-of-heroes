@@ -88,3 +88,31 @@ button.delete:hover {
   background-color: #525252;
   color: white;
 }
+
+.dropbtn {
+  background-color: #EEE;
+  color: black;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.dropbtn:hover {
+  color: white;
+  background-color: #42545C;
+}
+
+.dropbtn:focus {
+  color: white;
+  background-color: #42545C;
+}
+
+/* Change color of dropdown links on hover */
+.dropbtn-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropbtn:hover .dropdown-content {
+  display: block;
+}

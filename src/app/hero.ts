@@ -1,5 +1,10 @@
+export interface City {
+  id: number;
+  name: string;
+}
+
 export interface Hero {
   id: number;
-  city: string;
   name: string;
+  cityid: number;
 }

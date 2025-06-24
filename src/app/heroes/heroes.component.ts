@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { City, Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { HeroService } from '../hero.service';
@@ -14,13 +14,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './heroes.component.css'
 })
 export class HeroesComponent implements OnInit {
-
+  
+  hero: Hero | undefined;
   heroes: Hero[] = [];
+  city = { cityname:"", cityid: 1 };
+  cities: City[] = [];
 
   constructor(private heroService: HeroService) {}
 
   ngOnInit(): void {
     this.getHeroes();
+    this.heroService.getCities().subscribe(cities => this.cities = cities);
   }
 
   getHeroes(): void {
@@ -28,12 +32,12 @@ export class HeroesComponent implements OnInit {
       .subscribe(heroes => this.heroes = heroes);
   }
 
-  add(name: string): void {
+  add(name: string, cityid: number): void {
     if (typeof name !== 'string' || name.length < 1 || name.length > 10) { 
       return;
     }
     
-    this.heroService.addHero({ name } as Hero)
+    this.heroService.addHero({ name, cityid} as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
       });

@@ -10,18 +10,26 @@ import { Observable } from 'rxjs';
 export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
+    const cities = [
+      { id: 1, name: 'Altoona' },
+      { id: 2, name: 'Pittsburgh' },
+      { id: 3, name: 'Allentown' },
+      { id: 4, name: 'Johnstown' },
+      { id: 5, name: 'Reading' }
+    ];
+
     const heroes = [
-      { id: 12, city: 'Altoona', name: 'Dr. Nice' },
-      { id: 13, city: 'Reading', name: 'Bombasto' },
-      { id: 14, city: 'Altoona', name: 'Celeritas' },
-      { id: 15, city: 'Pittsburgh', name: 'Magneta' },
-      { id: 16, city: 'Reading', name: 'RubberMan' },
-      { id: 17, city: 'Allentown', name: 'Dynama' },
-      { id: 18, city: 'Johnstown', name: 'Dr. IQ' },
-      { id: 19, city: 'Altoona', name: 'Magma' },
-      { id: 20, city: 'Pittsburgh', name: 'Tornado' }
+      { id: 12, name: 'Dr. Nice', cityid: 1, city: 'Altoona' },
+      { id: 13, name: 'Bombasto', cityid: 5, city: 'Reading' },
+      { id: 14, name: 'Celeritas', cityid: 1, city: 'Altoona' },
+      { id: 15, name: 'Magneta', cityid: 2, city: 'Pittsburgh', },
+      { id: 16, name: 'RubberMan', cityid: 5, city: 'Reading' },
+      { id: 17, name: 'Dynama', cityid: 3, city: 'Allentown' },
+      { id: 18, name: 'Dr. IQ', cityid: 4, city: 'Johnstown' },
+      { id: 19, name: 'Magma', cityid: 1, city: 'Altoona' },
+      { id: 20, name: 'Tornado', cityid: 2, city: 'Pittsburgh' }
     ]; 
-    return {heroes};
+    return {heroes, cities};
   }
 
   genId(heroes: Hero[]): number {

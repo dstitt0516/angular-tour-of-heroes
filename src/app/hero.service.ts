@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Hero } from './hero';
+import { City, Hero } from './hero';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -24,6 +24,20 @@ export class HeroService {
  */
   
   /** Data Retrieval Methods */
+
+  getCities(): Observable<City[]> {
+    return this.http.get<City[]>('api/cities');
+  }
+
+  getCity(id: number): Observable<City> {
+    const url = `api/cities/${id}`
+
+    return this.http.get<City>(url)
+      .pipe(
+        tap(_ => this.log(`fetched city id=${id}`)),
+        catchError(this.handleError<City>(`getCity id=${id}`))
+      );
+  }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
