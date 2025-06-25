@@ -10,6 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class HeroService {
 
   private heroesUrl = 'api/heroes';
+  private citiesUrl = 'api/cities';
   httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -78,23 +79,43 @@ export class HeroService {
       );
   }
 
-  searchHeroes(term: string): Observable<Hero[]> {
-    const trimmedName = term?.trim() ?? '';
+  searchHeroes(heroTerm: string): Observable<Hero[]> {
+    const trimmedName = heroTerm?.trim() ?? '';
 
     if (trimmedName === '') {
       return of([]);
     }
 
-    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${heroTerm}`)
       .pipe(
         tap( hero => {
           if (Array.isArray(hero) && hero.length > 0) {
-            this.log(`found heroes matching "${term}"`)
+            this.log(`found heroes matching "${heroTerm}"`)
           } else {
-            this.log(`no heroes matching "${term}"`)
+            this.log(`no heroes matching "${heroTerm}"`)
           }
         }),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
+      );
+  }
+
+  searchHeroCities(cityTerm: string): Observable<City[]> {
+    const trimmedName = cityTerm?.trim() ?? '';
+
+    if (trimmedName === '') {
+      return of([]);
+    }
+
+    return this.http.get<City[]>(`${this.citiesUrl}/?name=${cityTerm}`)
+      .pipe(
+        tap( city => {
+          if (Array.isArray(city) && city.length > 0) {
+            this.log(`found heroes in cities matching "${cityTerm}"`)
+          } else {
+            this.log(`no heroes in cities matching "${cityTerm}"`)
+          }
+        }),
+        catchError(this.handleError<Hero[]>('searchHeroCities', []))
       );
   }
 

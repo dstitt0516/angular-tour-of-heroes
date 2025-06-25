@@ -5,15 +5,6 @@
   width: 15em;
 }
 
-input {
-  display: block;
-  width: 100%;
-  max-width: 600px;
-  padding: .5rem;
-  margin: 1rem 0;
-  box-sizing: border-box;
-}
-
 .heroes li {
   position: relative;
   cursor: pointer;
@@ -62,41 +53,18 @@ input {
   border-radius: 4px 0 0 4px;
 }
 
-.add-button {
- padding: .5rem 1.5rem;
- font-size: 1rem;
- margin-bottom: 2rem;
+button.delete {
+  position: absolute;
+  left: 210px;
+  top: 5px;
+  background-color: white;
+  color:  #525252;
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 1px 10px 3px 10px;
 }
 
-.add-button:hover {
+button.delete:hover {
+  background-color: #525252;
   color: white;
-  background-color: #42545C;
-}
-
-.dropbtn {
-  background-color: #EEE;
-  color: black;
-  padding: 8px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.dropbtn:hover {
-  color: white;
-  background-color: #42545C;
-}
-
-.dropbtn:focus {
-  color: white;
-  background-color: #42545C;
-}
-
-/* Change color of dropdown links on hover */
-.dropbtn-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-.dropbtn:hover .dropdown-content {
-  display: block;
 }

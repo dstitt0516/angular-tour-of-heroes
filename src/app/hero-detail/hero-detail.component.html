@@ -11,9 +11,9 @@
 
   <br>
 
-  <select name="city" id="city" class="dropbtn" [(ngModel)]="city.cityid">
+  <select name="city" id="city" class="dropbtn">
     <option disabled selected>Add City</option>
-    <option *ngFor="let c of cities" [value]="c.id">{{c.name}}</option>
+    <option *ngFor="let a of cities" [value]="a.id">{{a.name}}</option>
   </select>
 
   <br>

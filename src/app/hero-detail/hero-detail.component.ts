@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City, Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
-import { NgIf, UpperCasePipe } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { Location } from '@angular/common';
@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-hero-detail',
   standalone: true,
-  imports: [ FormsModule, NgIf, UpperCasePipe],
+  imports: [ FormsModule, NgIf, UpperCasePipe, NgFor],
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })
@@ -27,10 +27,10 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
+    this.heroService.getCities().subscribe(cities => this.cities = cities);
   }
 
   getHero(): void {
-
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.heroService.getHero(id)

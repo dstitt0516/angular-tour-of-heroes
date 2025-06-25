@@ -4,20 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { RouterLink } from '@angular/router';
+import { HeroListComponent } from "../hero-list/hero-list.component";
 
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FormsModule, NgFor, RouterLink],
+  imports: [FormsModule, NgFor, HeroListComponent],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
 export class HeroesComponent implements OnInit {
   
   hero: Hero | undefined;
+  city = { cityid: 1 };
   heroes: Hero[] = [];
-  city = { cityname:"", cityid: 1 };
   cities: City[] = [];
 
   constructor(private heroService: HeroService) {}
