@@ -11,13 +11,9 @@ import { HeroService } from '../hero.service';
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.css'
 })
-export class HeroListComponent implements OnInit {
+export class HeroListComponent {
 
   @Input() heroes!:Hero[]
-
-  ngOnInit(): void {
-    console.log(this.heroes)
-  }
 
   constructor( private heroService: HeroService ) {}
 

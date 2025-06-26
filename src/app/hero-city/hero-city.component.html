@@ -1,7 +1,6 @@
 <div style="padding-top: 20px;">
-    <h3 style="padding-bottom: 20px;">Found Heroes with City: {{ getCityFromUrl() }}</h3>
-
-    <div  ngIf='matchingHeroes?.length > 0' ><app-hero-list [heroes]="matchingHeroes"></app-hero-list></div>
+    <h3 style="padding-bottom: 20px;">Found Heroes with City: {{ getCityFromUrl()?.name | uppercase }}</h3>
+    <app-hero-list [heroes]="matchingHeroes"></app-hero-list>
 
 
 </div>

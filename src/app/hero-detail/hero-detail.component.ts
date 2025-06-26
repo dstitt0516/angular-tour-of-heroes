@@ -53,6 +53,7 @@ export class HeroDetailComponent implements OnInit {
       this.hero.name.length <= 10 &&
       this.hero.name.length > 0
     ) {
+      this.heroService.updateCity(this.city!)
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
     }

@@ -8,14 +8,14 @@ import { HeroListComponent } from '../hero-list/hero-list.component';
 @Component({
   selector: 'app-hero-city',
   standalone: true,
-  imports: [ UpperCasePipe, RouterLink, HeroListComponent, NgIf],
+  imports: [ UpperCasePipe, HeroListComponent],
   templateUrl: './hero-city.component.html',
   styleUrl: './hero-city.component.css'
 })
 export class HeroCityComponent implements OnInit {
 
   Heroes: Hero[] = [];
-  matchingHeroes: Hero[] = this.Heroes.filter(hero => hero.cityid === this.getCityID());
+  matchingHeroes: Hero[] = []
   cities: City[] = [];
 
   constructor(
@@ -36,15 +36,19 @@ export class HeroCityComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.Heroes = heroes);
+    this.heroService.getHeroes().subscribe(heroes => {
+      this.Heroes = heroes;
+      this.matchingHeroes = this.Heroes.filter(
+        hero => Number(hero.cityid) === this.getCityID()
+      );
+    });
   }
 
   getCityFromUrl() {
-    const cityid1 = Number(this.route.snapshot.paramMap.get('id'));
-    // const city = 
-     
-    return cityid1
+    const cityid = Number(this.route.snapshot.paramMap.get('id'));
+    const city = this.cities.find(city => Number(city.id) === cityid);
+    
+    return city
 
   }
 }
