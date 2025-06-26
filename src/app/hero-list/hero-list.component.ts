@@ -13,11 +13,11 @@ import { HeroService } from '../hero.service';
 })
 export class HeroListComponent {
 
-  @Input() heroes!:Hero[]
+  @Input() heroes!:Hero[];
 
   constructor( private heroService: HeroService ) {}
 
-  delete(heroToDelete: Hero): void {
+  delete (heroToDelete: Hero): void {
       this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
       this.heroService.deleteHero(heroToDelete.id)
         .subscribe();

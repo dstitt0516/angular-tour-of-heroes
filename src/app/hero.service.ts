@@ -110,9 +110,9 @@ export class HeroService {
       .pipe(
         tap( city => {
           if (Array.isArray(city) && city.length > 0) {
-            this.log(`found heroes in cities matching "${cityTerm}"`)
+            this.log(`found cities matching "${cityTerm}"`)
           } else {
-            this.log(`no heroes in cities matching "${cityTerm}"`)
+            this.log(`no cities matching "${cityTerm}"`)
           }
         }),
         catchError(this.handleError<Hero[]>('searchHeroCities', []))

@@ -38,9 +38,10 @@ export class HeroesComponent implements OnInit {
       return;
     }
     
-    this.heroService.addHero({ name, cityid} as Hero)
+    this.heroService.addHero({ name, cityid } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
+        this.getHeroes()
       });
   }
 
@@ -49,6 +50,7 @@ export class HeroesComponent implements OnInit {
       .subscribe({
         next: () => {
           this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
+          this.getHeroes()
         },
         error: err => {
           console.error('deletion failed', err);
