@@ -4,20 +4,18 @@
   <div><span>city: </span>{{city?.name}}</div>
   <div><span>cityid: </span>{{hero.cityid}}</div>
   
-  <div>
+  <div style="padding-bottom: 30px;">
     <label for="hero-name">Hero name:</label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
   </div>
 
-  <br>
+  <div>
+    <select name="city" id="city" class="dropbtn" [(ngModel)]="hero.cityid">
+      <option disabled selected>Add City</option>
+      <option *ngFor="let a of cities" [value]="a.id">{{a.name}}
+    </select>
+  </div>
 
-  <select name="city" id="city" class="dropbtn">
-    <option disabled selected>Add City</option>
-    <option *ngFor="let a of cities" [value]="a.id">{{a.name}}</option>
-  </select>
-
-  <br>
-  
   <button type="button" 
     (click)="goBack()">Go Back</button>
   <button type="button" 

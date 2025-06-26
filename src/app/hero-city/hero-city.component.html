@@ -1,6 +1,4 @@
 <div style="padding-top: 20px;">
-    <h3 style="padding-bottom: 20px;">Found Heroes with City: {{ getCityFromUrl()?.name | uppercase }}</h3>
+    <h3 style="padding-bottom: 20px;">Heroes Found With City: {{ getCityFromUrl()?.name | uppercase }}</h3>
     <app-hero-list [heroes]="matchingHeroes"></app-hero-list>
-
-
 </div>

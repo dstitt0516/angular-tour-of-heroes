@@ -1,7 +1,7 @@
-import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { City, Hero } from '../hero';
-import {  ActivatedRoute, RouterLink } from '@angular/router';  
+import {  ActivatedRoute } from '@angular/router';  
 import { HeroService } from '../hero.service';
 import { HeroListComponent } from '../hero-list/hero-list.component';
 
@@ -18,16 +18,12 @@ export class HeroCityComponent implements OnInit {
   matchingHeroes: Hero[] = []
   cities: City[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private heroService: HeroService
-  ) {}
+  constructor( private route: ActivatedRoute, private heroService: HeroService) {}
 
   getCityID() {
     const cityid = Number(this.route.snapshot.paramMap.get('id'));
 
     return cityid
-
   }
 
   ngOnInit(): void {
@@ -36,19 +32,18 @@ export class HeroCityComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => {
-      this.Heroes = heroes;
-      this.matchingHeroes = this.Heroes.filter(
-        hero => Number(hero.cityid) === this.getCityID()
-      );
-    });
+    this.heroService.getHeroes()
+      .subscribe(heroes => {
+        this.Heroes = heroes;
+        this.matchingHeroes = this.Heroes.filter(
+          hero => Number(hero.cityid) === this.getCityID()
+        );
+      });
   }
 
   getCityFromUrl() {
-    const cityid = Number(this.route.snapshot.paramMap.get('id'));
-    const city = this.cities.find(city => Number(city.id) === cityid);
+    const city = this.cities.find(city => Number(city.id) === this.getCityID());
     
     return city
-
   }
 }

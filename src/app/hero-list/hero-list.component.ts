@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
@@ -21,6 +21,5 @@ export class HeroListComponent {
       this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
       this.heroService.deleteHero(heroToDelete.id)
         .subscribe();
-    }
-
+  }
 }

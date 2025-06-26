@@ -45,8 +45,14 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(heroToDelete: Hero): void {
-    this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
     this.heroService.deleteHero(heroToDelete.id)
-      .subscribe();
+      .subscribe({
+        next: () => {
+          this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
+        },
+        error: err => {
+          console.error('deletion failed', err);
+        }
+      });
   } 
 }

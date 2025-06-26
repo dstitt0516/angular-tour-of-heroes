@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City, Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
-import { AsyncPipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { Location } from '@angular/common';
@@ -53,9 +53,8 @@ export class HeroDetailComponent implements OnInit {
       this.hero.name.length <= 10 &&
       this.hero.name.length > 0
     ) {
-      this.heroService.updateCity(this.city!)
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
-    }
+      }
   }
 }
