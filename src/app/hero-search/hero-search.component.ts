@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 import { City, Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-hero-search',

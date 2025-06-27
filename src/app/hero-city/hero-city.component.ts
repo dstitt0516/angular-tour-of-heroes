@@ -2,7 +2,7 @@ import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { City, Hero } from '../hero';
 import {  ActivatedRoute } from '@angular/router';  
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 import { HeroListComponent } from '../hero-list/hero-list.component';
 
 @Component({

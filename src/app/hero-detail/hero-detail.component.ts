@@ -3,7 +3,7 @@ import { City, Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 import { Location } from '@angular/common';
 
 @Component({

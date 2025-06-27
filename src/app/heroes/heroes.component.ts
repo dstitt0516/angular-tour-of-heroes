@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { City, Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
-import { HeroService } from '../hero.service';
-import { RouterLink } from '@angular/router';
+import { HeroService } from '../services/hero.service';
 import { HeroListComponent } from "../hero-list/hero-list.component";
 
 
