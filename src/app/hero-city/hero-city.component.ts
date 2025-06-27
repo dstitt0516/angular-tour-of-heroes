@@ -20,15 +20,15 @@ export class HeroCityComponent implements OnInit {
 
   constructor( private route: ActivatedRoute, private heroService: HeroService) {}
 
+  ngOnInit(): void {
+    this.getHeroes();
+    this.heroService.getCities().subscribe(cities => this.cities = cities);
+  }
+
   getCityID() {
     const cityid = Number(this.route.snapshot.paramMap.get('id'));
 
     return cityid
-  }
-
-  ngOnInit(): void {
-    this.getHeroes();
-    this.heroService.getCities().subscribe(cities => this.cities = cities);
   }
 
   getHeroes(): void {
