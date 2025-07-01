@@ -24,18 +24,7 @@ export class HeroCityComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
-    this.cityService.getCities()
-      .subscribe(cities => this.cities = cities);
-  }
-
-  getCityID() {
-    const cityid: number = Number(this.route.snapshot.paramMap.get('id'));
-
-    if (typeof cityid !== 'number' || Number.isNaN(cityid) || cityid === null) {
-      return;
-    } else {
-      return cityid;
-    }
+    this.getCities();
   }
 
   getHeroes(): void {
@@ -48,9 +37,24 @@ export class HeroCityComponent implements OnInit {
       });
   }
 
+  getCities(): void {
+    this.cityService.getCities()
+      .subscribe(cities => this.cities = cities);
+  }
+
   getCityName() {
     const city = this.cities.find(city => Number(city.id) === this.getCityID());
     
     return city;
+  }
+
+  getCityID() {
+    const cityid: number = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (typeof cityid !== 'number' || Number.isNaN(cityid) || cityid === null) {
+    return;
+    } else {
+    return cityid;
+    }
   }
 }

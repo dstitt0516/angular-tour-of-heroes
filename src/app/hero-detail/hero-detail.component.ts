@@ -56,6 +56,7 @@ export class HeroDetailComponent implements OnInit {
       this.hero.name.length <= 10 &&
       this.hero.name.length > 0
     ) {
+      this.hero.name = this.hero.name.charAt(0).toUpperCase() + this.hero.name.slice(1)
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
       }

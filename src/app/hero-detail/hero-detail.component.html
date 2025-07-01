@@ -11,8 +11,13 @@
 
   <div>
     <select name="city" id="city" class="dropbtn" [(ngModel)]="hero.cityid">
-      <option disabled selected>Add City</option>
-      <option *ngFor="let city of cities" [value]="city.id">{{city.name}}
+      <option disabled selected>
+        Add City
+      </option>
+
+      <option *ngFor="let city of cities" [value]="city.id">
+        {{city.name}}
+        </option>
     </select>
   </div>
 

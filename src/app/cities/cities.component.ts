@@ -31,6 +31,16 @@ export class CitiesComponent implements OnInit {
     if (typeof name !== 'string' || name.length < 1) { 
       return;
     }
+
+    const cityCheck = this.cities.some(
+      city => city.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (cityCheck) {
+      return;
+    }
+
+    name = name.charAt(0).toUpperCase() + name.slice(1)
     
     this.cityService.addCity({ name } as City)
       .subscribe(city => {
