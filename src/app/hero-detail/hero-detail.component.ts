@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { City, Hero } from '../hero';
+import { Hero } from '../hero';
+import { City } from '../city';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../services/hero.service';
 import { Location } from '@angular/common';
+import { CityService } from '../services/city.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -20,6 +22,7 @@ export class HeroDetailComponent implements OnInit {
   city: City | undefined;
 
   constructor(
+    private cityService: CityService,
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
@@ -27,16 +30,16 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
-    this.heroService.getCities().subscribe(cities => this.cities = cities);
+    this.cityService.getCities().subscribe(cities => this.cities = cities);
   }
 
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id: number = Number(this.route.snapshot.paramMap.get('id'));
 
     this.heroService.getHero(id)
       .subscribe((hero)=> {
         this.hero = hero 
-        this.heroService.getCity(hero.cityid).subscribe(city => this.city = city);
+        this.cityService.getCity(hero.cityid).subscribe(city => this.city = city);
       });
   }
 

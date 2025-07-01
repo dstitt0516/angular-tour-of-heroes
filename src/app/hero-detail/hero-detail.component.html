@@ -4,7 +4,7 @@
   <div><span>city: </span>{{city?.name}}</div>
   <div><span>cityid: </span>{{hero.cityid}}</div>
   
-  <div style="padding-bottom: 30px;">
+  <div class="spacing-bottom">
     <label for="hero-name">Hero name:</label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
   </div>
@@ -12,7 +12,7 @@
   <div>
     <select name="city" id="city" class="dropbtn" [(ngModel)]="hero.cityid">
       <option disabled selected>Add City</option>
-      <option *ngFor="let a of cities" [value]="a.id">{{a.name}}
+      <option *ngFor="let city of cities" [value]="city.id">{{city.name}}
     </select>
   </div>
 

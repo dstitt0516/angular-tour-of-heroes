@@ -17,9 +17,20 @@ export class HeroListComponent {
 
   constructor( private heroService: HeroService ) {}
 
-  delete (heroToDelete: Hero): void {
-      this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
-      this.heroService.deleteHero(heroToDelete.id)
-        .subscribe();
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+  }
+
+  delete(heroToDelete: Hero): void {
+    this.heroService.deleteHero(heroToDelete.id)
+      .subscribe({
+        next: () => {
+          this.heroes = this.heroes.filter(hero => hero !== heroToDelete);
+        },
+        error: err => {
+          console.error('deletion failed', err);
+        }
+      });
   }
 }

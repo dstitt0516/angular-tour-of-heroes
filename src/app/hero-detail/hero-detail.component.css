@@ -51,3 +51,7 @@ button:disabled {
 .dropbtn:hover .dropdown-content {
   display: block;
 }
+
+.spacing-bottom {
+    padding-bottom: 30px;
+}

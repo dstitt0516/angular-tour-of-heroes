@@ -11,27 +11,27 @@ export class HeroApiService {
   constructor(private http: HttpClient) {}
 
   testing(): Observable<any> {
-    return this.http.get(`${environment.apiBaseURL}/`)
+    return this.http.get(`${environment.apiBaseURL}/`);
   }
 
   getHeroes(): Observable<any> {
-    return this.http.get(`${environment.apiBaseURL}/getHeroes`)
+    return this.http.get(`${environment.apiBaseURL}/getHeroes`);
   }
 
   getCities(): Observable<any> {
-    return this.http.get(`${environment.apiBaseURL}/getCities`)
+    return this.http.get(`${environment.apiBaseURL}/getCities`);
   }
 
   addHero(): Observable<any> {
-    return this.http.post(`${environment.apiBaseURL}/addHero`, '')
+    return this.http.post(`${environment.apiBaseURL}/addHero`, '');
   }
 
   updateHero(): Observable<any> {
-    return this.http.put(`${environment.apiBaseURL}/updateHero`, '')
+    return this.http.put(`${environment.apiBaseURL}/updateHero`, '');
   }
 
   deleteHero(): Observable<any> {
-    return this.http.delete(`${environment.apiBaseURL}/deleteHero`)
+    return this.http.delete(`${environment.apiBaseURL}/deleteHero`);
   }
 
 }

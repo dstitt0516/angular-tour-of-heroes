@@ -2,24 +2,26 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
-import { City, Hero } from '../hero';
+import { Hero } from '../hero';
+import { City } from '../city';
 import { HeroService } from '../services/hero.service';
+import { CityService } from '../services/city.service';
 
 @Component({
-  selector: 'app-hero-search',
+  selector: 'app-search',
   standalone: true,
   imports: [ RouterLink, NgFor, AsyncPipe],
-  templateUrl: './hero-search.component.html',
-  styleUrl: './hero-search.component.css'
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.css'
 })
-export class HeroSearchComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   heroes$!: Observable<Hero[]>;
   cities$!: Observable<City[]>;
   private heroSearchTerms = new Subject<string>();
   private citySearchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private cityService: CityService) {}
 
   /** Push a search term into the observable stream. */
 
@@ -49,7 +51,7 @@ export class HeroSearchComponent implements OnInit {
 
         distinctUntilChanged(),
        
-        switchMap((cityTerm: string) => this.heroService.searchHeroCities(cityTerm)),
+        switchMap((cityTerm: string) => this.cityService.searchHeroCities(cityTerm)),
       );
   }
 }

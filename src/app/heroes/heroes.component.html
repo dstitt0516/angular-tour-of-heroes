@@ -1,22 +1,31 @@
-<h2>My Heroes</h2>
+<h2>Add Hero</h2>
 
 <div>
   <label for="new-hero">Hero name:</label>
   <input id="new-hero" #heroName />
+
   <button type="button" class="add-button"
-    (click)="add(heroName.value.trim(), city.cityid); heroName.value=''">
+    (click)="addHero(heroName.value.trim(), city.cityid); heroName.value=''">
     Add Hero
   </button>
 
+  <label for="new-city">New hero city:</label>
 
   <select name="city" id="city" class="dropbtn" [(ngModel)]="city.cityid">
     <option disabled selected>
       Add City
     </option>
-    <option *ngFor="let c of cities" [value]="c.id">
-      {{c.name}}
-    </option>
+
+    <option *ngFor="let city of cities" [value]="city.id">
+      {{city.name}}
+    </option>    
   </select>
 </div>
+
+<h2>Add City</h2>
+
+<app-cities></app-cities>
+
+<h2>My Heroes</h2>
 
 <app-hero-list [heroes]="heroes"></app-hero-list>

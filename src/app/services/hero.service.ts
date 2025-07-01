@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { City, Hero } from '../hero';
+import { Hero } from '../hero';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -10,14 +10,13 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class HeroService {
 
   private heroesUrl = 'api/heroes';
-  private citiesUrl = 'api/cities';
   httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private messageService: MessageService, private http: HttpClient) {}
 
-  /**
+ /**
  * Handle Http operation that failed.
  * Let the app continue.
  * @param operation - name of the operation that failed
@@ -25,20 +24,6 @@ export class HeroService {
  */
   
   /** Data Retrieval Methods */
-
-  getCities(): Observable<City[]> {
-    return this.http.get<City[]>('api/cities');
-  }
-
-  getCity(id: number): Observable<City> {
-    const url = `api/cities/${id}`
-
-    return this.http.get<City>(url)
-      .pipe(
-        tap(_ => this.log(`fetched city id=${id}`)),
-        catchError(this.handleError<City>(`getCity id=${id}`))
-      );
-  }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -69,9 +54,9 @@ export class HeroService {
         map(heroes => heroes[0]),
         tap(hero => {
           if (typeof hero === 'object' && hero !== null) {
-              outcome = 'fetched';
+            outcome = 'fetched';
           } else {
-              outcome = 'did not find'; 
+            outcome = 'did not find'; 
           }
           this.log(`${outcome} hero id=${id}`);
         }),
@@ -96,26 +81,6 @@ export class HeroService {
           }
         }),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
-      );
-  }
-
-  searchHeroCities(cityTerm: string): Observable<City[]> {
-    const trimmedName = cityTerm?.trim() ?? '';
-
-    if (trimmedName === '') {
-      return of([]);
-    }
-
-    return this.http.get<City[]>(`${this.citiesUrl}/?name=${cityTerm}`)
-      .pipe(
-        tap( city => {
-          if (Array.isArray(city) && city.length > 0) {
-            this.log(`found cities matching "${cityTerm}"`)
-          } else {
-            this.log(`no cities matching "${cityTerm}"`)
-          }
-        }),
-        catchError(this.handleError<Hero[]>('searchHeroCities', []))
       );
   }
 
