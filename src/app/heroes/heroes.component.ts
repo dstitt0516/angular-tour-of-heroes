@@ -27,7 +27,7 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
-    this.cityService.$cities.subscribe(cities => this.cities = cities);
+    this.getCitiesBehaviorSubject();
   }
 
   getHeroes(): void {
@@ -35,12 +35,16 @@ export class HeroesComponent implements OnInit {
       .subscribe(heroes => this.heroes = heroes);
   }
 
+  getCitiesBehaviorSubject() {
+    this.cityService.$cities.subscribe(cities => this.cities = cities);
+  }
+
   addHero(name: string, cityid: number): void {
     if (typeof name !== 'string' || name.length < 1 || name.length > 10) { 
       return;
     }
 
-    name = name.charAt(0).toUpperCase() + name.slice(1)
+    name = name.charAt(0).toUpperCase() + name.slice(1);
     
     this.heroService.addHero({ name, cityid } as Hero)
       .subscribe(hero => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../city';
 import { CityService } from '../services/city.service';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cities',
@@ -40,7 +41,7 @@ export class CitiesComponent implements OnInit {
       return;
     }
 
-    name = name.charAt(0).toUpperCase() + name.slice(1)
+    name = name.charAt(0).toUpperCase() + name.slice(1);
     
     this.cityService.addCity({ name } as City)
       .subscribe(city => {
@@ -48,5 +49,4 @@ export class CitiesComponent implements OnInit {
         this.getCities()
       });
   }
-
 }

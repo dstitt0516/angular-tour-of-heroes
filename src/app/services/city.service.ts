@@ -14,27 +14,29 @@ export class CityService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    $cities:BehaviorSubject<City[]> = new BehaviorSubject<City[]>([])
+
+  $cities:BehaviorSubject<City[]> = new BehaviorSubject<City[]>([]);
+
   constructor(private http: HttpClient, private messageService: MessageService,) {}
 
   searchHeroCities(cityTerm: string): Observable<City[]> {
-      const trimmedName = cityTerm?.trim() ?? '';
-  
-      if (trimmedName === '') {
-        return of([]);
-      }
-  
-      return this.http.get<City[]>(`${this.citiesUrl}/?name=${cityTerm}`)
-        .pipe(
-          tap( city => {
-            if (Array.isArray(city) && city.length > 0) {
-              this.log(`found cities matching "${cityTerm}"`)
-            } else {
-              this.log(`no cities matching "${cityTerm}"`)
-            }
-          }),
-          catchError(this.handleError<Hero[]>('searchHeroCities', []))
-        );
+    const trimmedName = cityTerm?.trim() ?? '';
+
+    if (trimmedName === '') {
+      return of([]);
+    }
+
+    return this.http.get<City[]>(`${this.citiesUrl}/?name=${cityTerm}`)
+      .pipe(
+        tap( city => {
+          if (Array.isArray(city) && city.length > 0) {
+            this.log(`found cities matching "${cityTerm}"`)
+          } else {
+            this.log(`no cities matching "${cityTerm}"`)
+          }
+        }),
+        catchError(this.handleError<Hero[]>('searchHeroCities', []))
+      );
   }
 
   getCities(): Observable<City[]> {
@@ -64,7 +66,7 @@ export class CityService {
       );
   }
 
-    /** Handle Http operation that failed. */
+  /** Handle Http operation that failed. */
 
   private handleError<hero>(operation = 'operation', result?: hero) {
     return (error: any): Observable<hero> => {

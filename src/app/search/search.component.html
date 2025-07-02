@@ -1,6 +1,9 @@
 <div id="hero search-component">
-  <label for="hero search-box">Hero Search: (search by name)</label>
-  <input #heroSearchBox id="hero search-box" (input)="heroSearch(heroSearchBox.value)"/>
+  <label for="hero search-box">
+    Hero Search: (search by name)
+  </label>
+
+  <input #heroSearchBox id="hero search-box" (input)="heroSearch(heroSearchBox.value)" />
 
   <ul class="search-result">
     <li *ngFor="let hero of heroes$ | async" >
@@ -12,8 +15,11 @@
 </div>
 
 <div id="city search-component">
-  <label for="city search-box">City Search: (search heroes by city)</label>
-  <input #citySearchBox id="city search-box" (input)="citySearch(citySearchBox.value)"/>
+  <label for="city search-box">
+    City Search: (search heroes by city)
+  </label>
+  
+  <input #citySearchBox id="city search-box" (input)="citySearch(citySearchBox.value)" />
 
   <ul class="search-result">
     <li *ngFor="let city of cities$ | async" >

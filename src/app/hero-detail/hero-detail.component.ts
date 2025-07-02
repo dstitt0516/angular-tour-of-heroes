@@ -30,7 +30,7 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
-    this.cityService.getCities().subscribe(cities => this.cities = cities);
+    this.getCities();
   }
 
   getHero(): void {
@@ -41,6 +41,10 @@ export class HeroDetailComponent implements OnInit {
         this.hero = hero 
         this.cityService.getCity(hero.cityid).subscribe(city => this.city = city);
       });
+  }
+
+  getCities() {
+    this.cityService.getCities().subscribe(cities => this.cities = cities);
   }
 
   goBack(): void {
@@ -56,7 +60,8 @@ export class HeroDetailComponent implements OnInit {
       this.hero.name.length <= 10 &&
       this.hero.name.length > 0
     ) {
-      this.hero.name = this.hero.name.charAt(0).toUpperCase() + this.hero.name.slice(1)
+      this.hero.name = this.hero.name.charAt(0).toUpperCase() + this.hero.name.slice(1);
+
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
       }

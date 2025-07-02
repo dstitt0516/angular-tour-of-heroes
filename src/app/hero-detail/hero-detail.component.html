@@ -5,8 +5,11 @@
   <div><span>cityid: </span>{{hero.cityid}}</div>
   
   <div class="spacing-bottom">
-    <label for="hero-name">Hero name:</label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
+    <label for="hero-name">
+      Hero name:
+    </label>
+
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name" />
   </div>
 
   <div>
@@ -17,7 +20,7 @@
 
       <option *ngFor="let city of cities" [value]="city.id">
         {{city.name}}
-        </option>
+      </option>
     </select>
   </div>
 
