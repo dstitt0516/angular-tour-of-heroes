@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../city';
 import { CityService } from '../services/city.service';
-import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cities',
