@@ -6,11 +6,12 @@ import { Hero } from '../hero';
 import { City } from '../city';
 import { HeroService } from '../services/hero.service';
 import { CityService } from '../services/city.service';
+import { GenericListComponent } from "../generic-list/generic-list.component";
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [ RouterLink, NgFor, AsyncPipe],
+  imports: [NgFor, AsyncPipe, GenericListComponent, RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

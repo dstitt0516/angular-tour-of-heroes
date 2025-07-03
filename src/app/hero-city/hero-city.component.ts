@@ -19,20 +19,21 @@ export class HeroCityComponent implements OnInit {
   Heroes: Hero[] = [];
   matchingHeroes: Hero[] = [];
   cities: City[] = [];
+  cityId = this.getCityID()
 
   constructor(private route: ActivatedRoute, private heroService: HeroService, private cityService: CityService) {}
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroesByCityId();
     this.getCities();
   }
 
-  getHeroes(): void {
+  getHeroesByCityId(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => {
         this.Heroes = heroes;
         this.matchingHeroes = this.Heroes.filter(
-          hero => Number(hero.cityid) === this.getCityID()
+          hero => Number(hero.cityid) === this.cityId
         );
       });
   }
@@ -43,18 +44,18 @@ export class HeroCityComponent implements OnInit {
   }
 
   getCityName() {
-    const city = this.cities.find(city => Number(city.id) === this.getCityID());
+    const city = this.cities.find(city => Number(city.id) === this.cityId);
     
     return city;
   }
 
   getCityID() {
-    const cityid: number = Number(this.route.snapshot.paramMap.get('id'));
+    const cityId: number = Number.parseInt(this.route.snapshot.paramMap.get('id') ?? '-1');
 
-    if (typeof cityid !== 'number' || Number.isNaN(cityid) || cityid === null) {
+    if (cityId === -1 || Number.isNaN(cityId)) {
     return;
     } else {
-    return cityid;
+    return cityId;
     }
   }
 }

@@ -32,11 +32,11 @@ export class CitiesComponent implements OnInit {
       return;
     }
 
-    const cityCheck = this.cities.some(
+    const cityExist = this.cities.some(
       city => city.name.toLowerCase() === name.toLowerCase()
     );
 
-    if (cityCheck) {
+    if (cityExist) {
       return;
     }
 
@@ -45,7 +45,7 @@ export class CitiesComponent implements OnInit {
     this.cityService.addCity({ name } as City)
       .subscribe(city => {
         this.cities.push(city);
-        this.getCities()
+        this.getCities();
       });
   }
 }

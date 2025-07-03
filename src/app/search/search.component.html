@@ -1,4 +1,27 @@
-<div id="hero search-component">
+<app-generic-list
+  [searchTitle]="'Hero Search: (search by name)'">
+</app-generic-list>
+
+<input #heroSearchBox id="city search-box" (input)="heroSearch(heroSearchBox.value)" />
+
+<app-generic-list
+  [observables]='heroes$'
+  [route]='/detail/'
+></app-generic-list>
+
+<app-generic-list
+  [searchTitle]="'City Search: (search heroes by city)'">
+</app-generic-list>
+
+<input #citySearchBox id="city search-box" (input)="citySearch(citySearchBox.value)" />
+
+<app-generic-list
+  [observables]="cities$"
+  [route]='/heroesbycity/'
+></app-generic-list>
+
+
+<!-- <div id="hero search-component">
   <label for="hero search-box">
     Hero Search: (search by name)
   </label>
@@ -28,5 +51,6 @@
       </a>
     </li>
   </ul>
-</div>
+</div> -->
+
 

@@ -1,13 +1,4 @@
 /* Search private styles */
-
-label {
-  display: block;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  margin-bottom: .5rem;
-
-}
 input {
   padding: .5rem;
   width: 100%;
@@ -23,6 +14,15 @@ input:focus {
 li {
   list-style-type: none;
 }
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
 .search-result li a {
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;

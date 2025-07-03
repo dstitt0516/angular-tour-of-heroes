@@ -1,0 +1,13 @@
+  <div id="search-component">
+    <label for="searchBox">
+        {{searchTitle}}
+    </label>
+
+    <ul class="search-result">
+        <li *ngFor="let observable of observables | async">
+            <a [router]='route'>
+                {{observable}}
+            </a>
+        </li>
+    </ul>
+  </div>
