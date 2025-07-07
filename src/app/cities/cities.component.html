@@ -1,3 +1,5 @@
+<h2>Add City</h2>
+
 <label for="new-city">City name:</label>
 
 <input id="new-city" #cityName />
@@ -6,3 +8,13 @@
     (click)="addCity(cityName.value.trim()); cityName.value=''">
     Add City
 </button>
+
+<h2>Look At Heroes Of A City</h2>
+
+<ul class="cities">
+  <li *ngFor="let city of cities">
+    <a routerLink="/heroesbycity/{{city.id}}">
+      <span class="badge">{{city.id}}</span>{{city.name}}
+    </a>
+  </li>
+</ul>

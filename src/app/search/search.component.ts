@@ -6,12 +6,12 @@ import { Hero } from '../hero';
 import { City } from '../city';
 import { HeroService } from '../services/hero.service';
 import { CityService } from '../services/city.service';
-import { GenericListComponent } from "../generic-list/generic-list.component";
+import { GenericSearchComponent } from "../generic-search/generic-search.component";
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [GenericListComponent],
+  imports: [GenericSearchComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

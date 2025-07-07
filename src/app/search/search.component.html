@@ -1,24 +1,24 @@
-<app-generic-list
+<app-generic-search
   [searchTitle]="'Hero Search: (search by name)'">
-</app-generic-list>
+</app-generic-search>
 
 <input #heroSearchBox id="city search-box" (input)="heroSearch(heroSearchBox.value)" />
 
-<app-generic-list
+<app-generic-search
   [observables]="heroes$"
   [route]="'/detail/'">
-</app-generic-list>
+</app-generic-search>
 
-<app-generic-list
+<app-generic-search
   [searchTitle]="'City Search: (search heroes by city)'">
-</app-generic-list>
+</app-generic-search>
 
 <input #citySearchBox id="city search-box" (input)="citySearch(citySearchBox.value)" />
 
-<app-generic-list
+<app-generic-search
   [observables]="cities$"
   [route]="'/heroesbycity/'">
-</app-generic-list> 
+</app-generic-search> 
 
 
 

@@ -2,15 +2,16 @@ import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { City } from '../city';
-import {  ActivatedRoute } from '@angular/router';  
+import { ActivatedRoute } from '@angular/router';  
 import { HeroService } from '../services/hero.service';
 import { HeroListComponent } from '../hero-list/hero-list.component';
 import { CityService } from '../services/city.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-hero-city',
   standalone: true,
-  imports: [ UpperCasePipe, HeroListComponent],
+  imports: [ UpperCasePipe, HeroListComponent ],
   templateUrl: './hero-city.component.html',
   styleUrl: './hero-city.component.css'
 })
@@ -19,9 +20,15 @@ export class HeroCityComponent implements OnInit {
   Heroes: Hero[] = [];
   matchingHeroes: Hero[] = [];
   cities: City[] = [];
+  city: City | undefined;
   cityId = this.getCityID()
 
-  constructor(private route: ActivatedRoute, private heroService: HeroService, private cityService: CityService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location, 
+    private heroService: HeroService, 
+    private cityService: CityService,
+  ) {}
 
   ngOnInit(): void {
     this.getHeroesByCityId();
@@ -57,5 +64,9 @@ export class HeroCityComponent implements OnInit {
     } else {
     return cityId;
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

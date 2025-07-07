@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../city';
 import { CityService } from '../services/city.service';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cities',
   standalone: true,
-  imports: [],
+  imports: [ NgFor, RouterLink ],
   templateUrl: './cities.component.html',
   styleUrl: './cities.component.css'
 })

@@ -12,7 +12,7 @@ import { CitiesComponent } from "../cities/cities.component";
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FormsModule, NgFor, HeroListComponent, CitiesComponent],
+  imports: [FormsModule, NgFor, HeroListComponent],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })

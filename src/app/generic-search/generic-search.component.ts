@@ -1,18 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
-import { City } from '../city';
 import { Item } from '../item';
 
 @Component({
-  selector: 'app-generic-list',
+  selector: 'app-generic-search',
   standalone: true,
   imports: [ CommonModule, RouterLink ],
-  templateUrl: './generic-list.component.html',
-  styleUrl: './generic-list.component.css'
+  templateUrl: './generic-search.component.html',
+  styleUrl: './generic-search.component.css'
 })
-export class GenericListComponent<T extends Item> {
+export class GenericSearchComponent<T extends Item> {
 
   @Input() searchTitle: string = '';
   @Input() route: string = '';         
