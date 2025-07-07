@@ -7,11 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../services/hero.service';
 import { Location } from '@angular/common';
 import { CityService } from '../services/city.service';
+import { GenericListComponent } from "../generic-list/generic-list.component";
 
 @Component({
   selector: 'app-hero-detail',
   standalone: true,
-  imports: [ FormsModule, NgIf, UpperCasePipe, NgFor],
+  imports: [FormsModule, NgIf, UpperCasePipe, GenericListComponent],
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })

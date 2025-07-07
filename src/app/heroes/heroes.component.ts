@@ -7,12 +7,13 @@ import { HeroService } from '../services/hero.service';
 import { HeroListComponent } from "../hero-list/hero-list.component";
 import { CityService } from '../services/city.service';
 import { CitiesComponent } from "../cities/cities.component";
+import { GenericListComponent } from "../generic-list/generic-list.component";
 
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FormsModule, NgFor, HeroListComponent],
+  imports: [FormsModule, HeroListComponent, GenericListComponent],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })

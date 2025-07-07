@@ -16,9 +16,9 @@
       Add City
     </option>
 
-    <option *ngFor="let city of cities" [value]="city.id">
-      {{city.name}}
-    </option>    
+    <app-generic-list 
+      [cityList]="cities">
+    </app-generic-list>  
   </select>
 </div>
 
