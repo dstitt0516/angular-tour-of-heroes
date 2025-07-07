@@ -11,7 +11,7 @@ import { GenericListComponent } from "../generic-list/generic-list.component";
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [NgFor, AsyncPipe, GenericListComponent, RouterLink],
+  imports: [GenericListComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

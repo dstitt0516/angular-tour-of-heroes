@@ -5,9 +5,9 @@
 <input #heroSearchBox id="city search-box" (input)="heroSearch(heroSearchBox.value)" />
 
 <app-generic-list
-  [observables]='heroes$'
-  [route]='/detail/'
-></app-generic-list>
+  [observables]="heroes$"
+  [route]="'/detail/'">
+</app-generic-list>
 
 <app-generic-list
   [searchTitle]="'City Search: (search heroes by city)'">
@@ -17,40 +17,8 @@
 
 <app-generic-list
   [observables]="cities$"
-  [route]='/heroesbycity/'
-></app-generic-list>
+  [route]="'/heroesbycity/'">
+</app-generic-list> 
 
-
-<!-- <div id="hero search-component">
-  <label for="hero search-box">
-    Hero Search: (search by name)
-  </label>
-
-  <input #heroSearchBox id="hero search-box" (input)="heroSearch(heroSearchBox.value)" />
-
-  <ul class="search-result">
-    <li *ngFor="let hero of heroes$ | async" >
-      <a routerLink="/detail/{{hero.id}}">
-        {{hero.name}}
-      </a>
-    </li>
-  </ul>
-</div>
-
-<div id="city search-component">
-  <label for="city search-box">
-    City Search: (search heroes by city)
-  </label>
-  
-  <input #citySearchBox id="city search-box" (input)="citySearch(citySearchBox.value)" />
-
-  <ul class="search-result">
-    <li *ngFor="let city of cities$ | async" >
-      <a routerLink="/heroesbycity/{{city.id}}">
-        {{city.name}}
-      </a>
-    </li>
-  </ul>
-</div> -->
 
 
