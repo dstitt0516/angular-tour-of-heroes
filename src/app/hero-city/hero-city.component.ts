@@ -21,7 +21,7 @@ export class HeroCityComponent implements OnInit {
   matchingHeroes: Hero[] = [];
   cities: City[] = [];
   city: City | undefined;
-  cityId = this.getCityID()
+  cityId = this.getCityId()
 
   constructor(
     private route: ActivatedRoute,
@@ -56,13 +56,13 @@ export class HeroCityComponent implements OnInit {
     return city;
   }
 
-  getCityID() {
-    const cityId: number = Number.parseInt(this.route.snapshot.paramMap.get('id') ?? '-1');
+  getCityId() {
+    const cityId = Number.parseInt(this.route.snapshot.paramMap.get('id') ?? '-1');
 
     if (cityId === -1 || Number.isNaN(cityId)) {
-    return;
+      return;
     } else {
-    return cityId;
+      return cityId;
     }
   }
 

@@ -30,15 +30,11 @@ export class CitiesComponent implements OnInit {
   }
 
   addCity(name: string): void {
-    if (typeof name !== 'string' || name.length < 1) { 
-      return;
-    }
-
-    const cityExist = this.cities.some(
-      city => city.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (cityExist) {
+    if (
+      typeof name !== 'string' || 
+      name.length < 1 ||
+      this.cities.some(city => city.name.toLowerCase() === name.toLowerCase())
+    ) { 
       return;
     }
 
