@@ -4,12 +4,13 @@ import { Hero } from '../hero';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 
 export class HeroService {
 
-  private heroesUrl = 'api/heroes';
+  private heroesURL = `${environment.apiBaseURL}/api/HeroItems`;
   httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -26,7 +27,7 @@ export class HeroService {
   /** Data Retrieval Methods */
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+    return this.http.get<Hero[]>(this.heroesURL)
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]>('getHeroes', []))
@@ -34,7 +35,7 @@ export class HeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.heroesURL}/${id}`;
 
     return this.http.get<Hero>(url)
       .pipe( 
@@ -46,7 +47,7 @@ export class HeroService {
   /** GET hero by id. Return `undefined` when id not found */
 
   getHeroNo404<Data>(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/?id=${id}`;
+    const url = `${this.heroesURL}/?id=${id}`;
     let outcome: string;
 
     return this.http.get<Hero[]>(url)
@@ -71,7 +72,7 @@ export class HeroService {
       return of([]);
     }
 
-    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${heroTerm}`)
+    return this.http.get<Hero[]>(`${this.heroesURL}/?name=${heroTerm}`)
       .pipe(
         tap( hero => {
           if (Array.isArray(hero) && hero.length > 0) {
@@ -87,7 +88,7 @@ export class HeroService {
   /** Data Modification Methods */
 
   updateHero(hero: Hero): Observable<Object> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions)
+    return this.http.put(this.heroesURL, hero, this.httpOptions)
       .pipe(
         tap(_ => this.log(`updated hero id=${hero.id}`)),
         catchError(this.handleError<Object>('updateHero'))
@@ -95,7 +96,7 @@ export class HeroService {
   }
 
   addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions)
+    return this.http.post<Hero>(this.heroesURL, hero, this.httpOptions)
       .pipe(
         tap((newHero: Hero) => this.log(`added hero with id=${newHero.id}`)),
         catchError(this.handleError<Hero>('addCity'))
@@ -103,7 +104,7 @@ export class HeroService {
   }
 
   deleteHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.heroesURL}/${id}`;
 
     return this.http.delete<Hero>(url, this.httpOptions)
       .pipe(

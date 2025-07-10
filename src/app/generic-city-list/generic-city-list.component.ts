@@ -4,19 +4,17 @@ import { City } from '../city';
 import { CityService } from '../services/city.service';
 
 @Component({
-  selector: 'app-generic-list',
+  selector: 'app-generic-city-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './generic-list.component.html',
-  styleUrl: './generic-list.component.css'
+  templateUrl: './generic-city-list.component.html',
+  styleUrl: './generic-city-list.component.css'
 })
-export class GenericListComponent<T extends City> implements OnInit {
+export class GenericCityListComponent<T extends City> implements OnInit {
     
   cities: City[] = [];
 
-  constructor(
-    private cityService: CityService,
-  ) {}
+  constructor(private cityService: CityService) {}
 
   ngOnInit(): void {
     this.getCities();

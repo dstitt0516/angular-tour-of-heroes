@@ -10,6 +10,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withViewTransitions()), 
     provideHttpClient(), 
-    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }))
+    importProvidersFrom(HttpClientInMemoryWebApiModule)
   ]
 };

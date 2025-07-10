@@ -4,13 +4,14 @@ import { Hero } from '../hero';
 import { City } from '../city';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { MessageService } from './message.service';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
 
-  private citiesUrl = 'api/cities';
+  private citiesURL = `${environment.apiBaseURL}/api/CityItems`;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -26,7 +27,7 @@ export class CityService {
       return of([]);
     }
 
-    return this.http.get<City[]>(`${this.citiesUrl}/?name=${cityTerm}`)
+    return this.http.get<City[]>(`${this.citiesURL}/?name=${cityTerm}`)
       .pipe(
         tap( city => {
           if (Array.isArray(city) && city.length > 0) {
@@ -40,7 +41,7 @@ export class CityService {
   }
 
   getCities(): Observable<City[]> {
-    const cityObservable:Observable<City[]> = this.http.get<City[]>('api/cities');
+    const cityObservable:Observable<City[]> = this.http.get<City[]>(this.citiesURL);
 
     cityObservable.subscribe((cities) => this.$cities
       .next(cities))
@@ -49,9 +50,9 @@ export class CityService {
   }
 
   getCity(id: number): Observable<City> {
-    const url = `api/cities/${id}`;
+    const URL = `${this.citiesURL}/${id}`;
 
-    return this.http.get<City>(url)
+    return this.http.get<City>(URL)
       .pipe(
         tap(_ => this.log(`fetched city id=${id}`)),
         catchError(this.handleError<City>(`getCity id=${id}`))
@@ -59,7 +60,7 @@ export class CityService {
   }
 
   addCity(city: City): Observable<City> {
-    return this.http.post<City>(this.citiesUrl, city, this.httpOptions)
+    return this.http.post<City>(this.citiesURL, city, this.httpOptions)
       .pipe(
         tap((newCity: City) => this.log(`added city with id=${newCity.id}`)),
         catchError(this.handleError<City>('addCity'))

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Item } from '../item';
+import { Base } from '../base';
 
 @Component({
   selector: 'app-generic-search',
@@ -11,7 +11,7 @@ import { Item } from '../item';
   templateUrl: './generic-search.component.html',
   styleUrl: './generic-search.component.css'
 })
-export class GenericSearchComponent<T extends Item> {
+export class GenericSearchComponent<T extends Base> {
 
   @Input() searchTitle: string = '';
   @Input() route: string = '';         

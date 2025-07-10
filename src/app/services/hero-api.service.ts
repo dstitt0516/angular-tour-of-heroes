@@ -15,23 +15,39 @@ export class HeroApiService {
   }
 
   getHeroes(): Observable<any> {
-    return this.http.get(`${environment.apiBaseURL}/getHeroes`);
+    console.log(this.http.get(`${environment.apiBaseURL}/api/HeroItems/`))
+    return this.http.get(`${environment.apiBaseURL}/api/HeroItems/`);
   }
 
   getCities(): Observable<any> {
-    return this.http.get(`${environment.apiBaseURL}/getCities`);
+    console.log(this.http.get(`${environment.apiBaseURL}/api/CityItems`))
+    return this.http.get(`${environment.apiBaseURL}/api/CityItems`);
   }
 
-  addHero(): Observable<any> {
-    return this.http.post(`${environment.apiBaseURL}/addHero`, '');
+  getHeroesById(id: number): Observable<any> {
+    console.log(this.http.get(`${environment.apiBaseURL}/api/HeroItems/`))
+    return this.http.get(`${environment.apiBaseURL}/api/HeroItems/${id}`);
   }
 
-  updateHero(): Observable<any> {
-    return this.http.put(`${environment.apiBaseURL}/updateHero`, '');
+  getCitiesById(cityId: number): Observable<any> {
+    console.log(this.http.get(`${environment.apiBaseURL}/api/CityItems`))
+    return this.http.get(`${environment.apiBaseURL}/api/CityItems${cityId}`);
   }
 
-  deleteHero(): Observable<any> {
-    return this.http.delete(`${environment.apiBaseURL}/deleteHero`);
+  addHero(hero: Observable<any>): Observable<any> {
+    return this.http.post(`${environment.apiBaseURL}/api/HeroItems/`, hero);
+  }
+
+  addCities(city: Observable<any>): Observable<any> {
+    return this.http.post(`${environment.apiBaseURL}/api/HeroItems/`, city);
+  }
+
+  updateHero(hero: Observable<any>): Observable<any> {
+    return this.http.put(`${environment.apiBaseURL}/api/HeroItems/`, hero);
+  }
+
+  deleteHero(id: number): Observable<any> {
+    return this.http.delete(`${environment.apiBaseURL}/api/HeroItems/${id}`);
   }
 
 }

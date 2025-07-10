@@ -7,13 +7,14 @@ import { HeroService } from '../services/hero.service';
 import { HeroListComponent } from "../hero-list/hero-list.component";
 import { CityService } from '../services/city.service';
 import { CitiesComponent } from "../cities/cities.component";
-import { GenericListComponent } from "../generic-list/generic-list.component";
+import { GenericCityListComponent } from "../generic-city-list/generic-city-list.component";
+import { HeroApiService } from '../services/hero-api.service';
 
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FormsModule, HeroListComponent, GenericListComponent],
+  imports: [FormsModule, HeroListComponent, GenericCityListComponent],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
@@ -24,7 +25,7 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   cities: City[] = [];
 
-  constructor(private heroService: HeroService, public cityService: CityService) {}
+  constructor(private heroService: HeroService, public cityService: CityService, public heroapiService: HeroApiService) {}
 
   ngOnInit(): void {
     this.getHeroes();
@@ -32,6 +33,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
+    console.log(this.heroapiService.getCities())
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }

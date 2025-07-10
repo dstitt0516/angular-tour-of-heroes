@@ -19,7 +19,7 @@ export class CitiesComponent implements OnInit {
   constructor(private cityService: CityService) {}
 
   ngOnInit(): void {
-    this.cityService.getCities().subscribe(cities => this.cities = cities);
+    this.getCities()
   }
 
   getCities(): void {
