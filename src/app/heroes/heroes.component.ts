@@ -33,7 +33,6 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    console.log(this.heroapiService.getCities())
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
@@ -42,14 +41,14 @@ export class HeroesComponent implements OnInit {
     this.cityService.$cities.subscribe(cities => this.cities = cities);
   }
 
-  addHero(name: string, cityid: number): void {
+  addHero(name: string, cityId: number): void {
     if (typeof name !== 'string' || name.length < 1 || name.length > 10) { 
       return;
     }
 
     name = name.charAt(0).toUpperCase() + name.slice(1);
     
-    this.heroService.addHero({ name, cityid } as Hero)
+    this.heroService.addHero({ name, cityId } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
         this.getHeroes()

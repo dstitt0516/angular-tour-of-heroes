@@ -33,14 +33,14 @@ export class CitiesComponent implements OnInit {
     if (
       typeof name !== 'string' || 
       name.length < 1 ||
-      this.cities.some(city => city.name.toLowerCase() === name.toLowerCase())
+      this.cities.some(city => city.city.toLowerCase() === name.toLowerCase())
     ) { 
       return;
     }
 
     name = name.charAt(0).toUpperCase() + name.slice(1);
     
-    this.cityService.addCity({ name } as City)
+    this.cityService.addCity({ city: name } as City)
       .subscribe(city => {
         this.cities.push(city);
         this.getCities();

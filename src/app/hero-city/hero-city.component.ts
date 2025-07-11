@@ -40,7 +40,7 @@ export class HeroCityComponent implements OnInit {
       .subscribe(heroes => {
         this.Heroes = heroes;
         this.matchingHeroes = this.Heroes.filter(
-          hero => Number(hero.cityid) === this.cityId
+          hero => Number(hero.cityId) === this.cityId
         );
       });
   }
@@ -51,7 +51,7 @@ export class HeroCityComponent implements OnInit {
   }
 
   getCityName() {
-    const city = this.cities.find(city => Number(city.id) === this.cityId);
+    const city = this.cities.find(city => Number(city.cityId) === this.cityId);
     
     return city;
   }

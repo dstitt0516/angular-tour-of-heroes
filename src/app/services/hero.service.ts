@@ -88,7 +88,7 @@ export class HeroService {
   /** Data Modification Methods */
 
   updateHero(hero: Hero): Observable<Object> {
-    return this.http.put(this.heroesURL, hero, this.httpOptions)
+    return this.http.put(`${this.heroesURL}/${hero.id}`, hero, this.httpOptions)
       .pipe(
         tap(_ => this.log(`updated hero id=${hero.id}`)),
         catchError(this.handleError<Object>('updateHero'))

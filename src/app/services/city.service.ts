@@ -36,7 +36,7 @@ export class CityService {
             this.log(`no cities matching "${cityTerm}"`)
           }
         }),
-        catchError(this.handleError<Hero[]>('searchHeroCities', []))
+        catchError(this.handleError<City[]>('searchHeroCities', []))
       );
   }
 
@@ -62,7 +62,7 @@ export class CityService {
   addCity(city: City): Observable<City> {
     return this.http.post<City>(this.citiesURL, city, this.httpOptions)
       .pipe(
-        tap((newCity: City) => this.log(`added city with id=${newCity.id}`)),
+        tap((newCity: City) => this.log(`added city with id=${newCity.cityId}`)),
         catchError(this.handleError<City>('addCity'))
       );
   }

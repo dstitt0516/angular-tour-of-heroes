@@ -1,8 +1,8 @@
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{hero.id}}</div>
-  <div><span>city: </span>{{city?.name}}</div>
-  <div><span>cityid: </span>{{hero.cityid}}</div>
+  <div><span>city: </span>{{city?.city}}</div>
+  <div><span>cityid: </span>{{hero.cityId}}</div>
   
   <div class="spacing-bottom">
     <label for="hero-name">
@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <select name="city" id="city" class="dropbtn" [(ngModel)]="hero.cityid">
+    <select name="city" id="city" class="dropbtn" [(ngModel)]="hero.cityId">
       <option disabled selected>
         Add City
       </option>

@@ -40,7 +40,7 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.getHero(id)
       .subscribe((hero)=> {
         this.hero = hero 
-        this.cityService.getCity(hero.cityid).subscribe(city => this.city = city);
+        this.cityService.getCity(hero.cityId).subscribe(city => this.city = city);
       });
   }
 
