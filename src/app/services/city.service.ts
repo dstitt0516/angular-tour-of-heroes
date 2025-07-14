@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment.development';
 export class CityService {
 
   private citiesURL = `${environment.apiBaseURL}/api/CityItems`;
+  private citiesSearchURL = `${environment.apiBaseURL}/api/CitySearchItems`;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -27,7 +28,7 @@ export class CityService {
       return of([]);
     }
 
-    return this.http.get<City[]>(`${this.citiesURL}/?name=${cityTerm}`)
+    return this.http.get<City[]>(`${this.citiesSearchURL}/?name=${cityTerm}`)
       .pipe(
         tap( city => {
           if (Array.isArray(city) && city.length > 0) {

@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment.development';
 export class HeroService {
 
   private heroesURL = `${environment.apiBaseURL}/api/HeroItems`;
+  private heroesSearchURL = `${environment.apiBaseURL}/api/HeroSearchItems`;
   httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -72,7 +73,7 @@ export class HeroService {
       return of([]);
     }
 
-    return this.http.get<Hero[]>(`${this.heroesURL}/?name=${heroTerm}`)
+    return this.http.get<Hero[]>(`${this.heroesSearchURL}/?name=${heroTerm}`)
       .pipe(
         tap( hero => {
           if (Array.isArray(hero) && hero.length > 0) {

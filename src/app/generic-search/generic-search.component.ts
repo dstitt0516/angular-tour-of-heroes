@@ -19,13 +19,14 @@ export class GenericSearchComponent<T extends Base> {
   @Input() route: string = '';         
   @Input() observables!: Observable<T[]>
 
-getDisplayName(name: Hero | City): string {
-  if ('name' in name) {
-    return name.name;
-  } else if ('city' in name) {
-    return name.city;
-  } return '';
-}
+  getDisplayName(name: Hero | City): string {
+    if ('name' in name) {
+      return name.name;
+    } else if ('city' in name) {
+      return name.city;
+    } 
+    return '';
+  }
 }
 
 

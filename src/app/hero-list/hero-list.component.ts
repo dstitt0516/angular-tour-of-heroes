@@ -15,7 +15,7 @@ export class HeroListComponent {
 
   @Input() heroes!:Hero[];
 
-  constructor( private heroService: HeroService ) {}
+  constructor(private heroService: HeroService) {}
 
   getHeroes(): void {
     this.heroService.getHeroes()

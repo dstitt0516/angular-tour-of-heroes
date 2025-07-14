@@ -25,7 +25,11 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   cities: City[] = [];
 
-  constructor(private heroService: HeroService, public cityService: CityService, public heroapiService: HeroApiService) {}
+  constructor
+    (
+      private heroService: HeroService, 
+      public cityService: CityService
+    ) {}
 
   ngOnInit(): void {
     this.getHeroes();
@@ -47,11 +51,13 @@ export class HeroesComponent implements OnInit {
     }
 
     name = name.charAt(0).toUpperCase() + name.slice(1);
+    const matchedCity = this.cities.find(city => Number(city.cityId) === Number(cityId));
+    const city = matchedCity?.city ?? '';
     
-    this.heroService.addHero({ name, cityId } as Hero)
+    this.heroService.addHero({ name, city, cityId } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
-        this.getHeroes()
+        this.getHeroes();
       });
   }
 }

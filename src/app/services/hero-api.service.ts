@@ -8,46 +8,46 @@ import { environment } from '../../environments/environment.development';
 })
 export class HeroApiService {
 
-  constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) {}
 
-  testing(): Observable<any> {
-    return this.http.get(`${environment.apiBaseURL}/`);
-  }
+  // testing(): Observable<any> {
+  //   return this.http.get(`${environment.apiBaseURL}/`);
+  // }
 
-  getHeroes(): Observable<any> {
-    console.log(this.http.get(`${environment.apiBaseURL}/api/HeroItems/`))
-    return this.http.get(`${environment.apiBaseURL}/api/HeroItems/`);
-  }
+  // getHeroes(): Observable<any> {
+  //   console.log(this.http.get(`${environment.apiBaseURL}/api/HeroItems/`))
+  //   return this.http.get(`${environment.apiBaseURL}/api/HeroItems/`);
+  // }
 
-  getCities(): Observable<any> {
-    console.log(this.http.get(`${environment.apiBaseURL}/api/CityItems`))
-    return this.http.get(`${environment.apiBaseURL}/api/CityItems`);
-  }
+  // getCities(): Observable<any> {
+  //   console.log(this.http.get(`${environment.apiBaseURL}/api/CityItems`))
+  //   return this.http.get(`${environment.apiBaseURL}/api/CityItems`);
+  // }
 
-  getHeroesById(id: number): Observable<any> {
-    console.log(this.http.get(`${environment.apiBaseURL}/api/HeroItems/`))
-    return this.http.get(`${environment.apiBaseURL}/api/HeroItems/${id}`);
-  }
+  // getHeroesById(id: number): Observable<any> {
+  //   console.log(this.http.get(`${environment.apiBaseURL}/api/HeroItems/`))
+  //   return this.http.get(`${environment.apiBaseURL}/api/HeroItems/${id}`);
+  // }
 
-  getCitiesById(cityId: number): Observable<any> {
-    console.log(this.http.get(`${environment.apiBaseURL}/api/CityItems`))
-    return this.http.get(`${environment.apiBaseURL}/api/CityItems${cityId}`);
-  }
+  // getCitiesById(cityId: number): Observable<any> {
+  //   console.log(this.http.get(`${environment.apiBaseURL}/api/CityItems`))
+  //   return this.http.get(`${environment.apiBaseURL}/api/CityItems${cityId}`);
+  // }
 
-  addHero(hero: Observable<any>): Observable<any> {
-    return this.http.post(`${environment.apiBaseURL}/api/HeroItems/`, hero);
-  }
+  // addHero(hero: Observable<any>): Observable<any> {
+  //   return this.http.post(`${environment.apiBaseURL}/api/HeroItems/`, hero);
+  // }
 
-  addCities(city: Observable<any>): Observable<any> {
-    return this.http.post(`${environment.apiBaseURL}/api/HeroItems/`, city);
-  }
+  // addCities(city: Observable<any>): Observable<any> {
+  //   return this.http.post(`${environment.apiBaseURL}/api/HeroItems/`, city);
+  // }
 
-  updateHero(hero: Observable<any>): Observable<any> {
-    return this.http.put(`${environment.apiBaseURL}/api/HeroItems/`, hero);
-  }
+  // updateHero(hero: Observable<any>): Observable<any> {
+  //   return this.http.put(`${environment.apiBaseURL}/api/HeroItems/`, hero);
+  // }
 
-  deleteHero(id: number): Observable<any> {
-    return this.http.delete(`${environment.apiBaseURL}/api/HeroItems/${id}`);
-  }
+  // deleteHero(id: number): Observable<any> {
+  //   return this.http.delete(`${environment.apiBaseURL}/api/HeroItems/${id}`);
+  // }
 
 }
