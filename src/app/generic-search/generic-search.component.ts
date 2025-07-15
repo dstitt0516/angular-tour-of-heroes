@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Base } from '../base';
 import { Hero } from '../hero';
 import { City } from '../city';
+import { Base } from '../base';
 
 @Component({
   selector: 'app-generic-search',
@@ -16,7 +16,8 @@ import { City } from '../city';
 export class GenericSearchComponent<T extends Base> {
 
   @Input() searchTitle: string = '';
-  @Input() route: string = '';         
+  @Input() route: string = '';
+  @Input() id!: number;         
   @Input() observables!: Observable<T[]>
 
   getDisplayName(name: Hero | City): string {
@@ -27,6 +28,11 @@ export class GenericSearchComponent<T extends Base> {
     } 
     return '';
   }
+
+  getId(observable: any): number {
+    return observable.id ?? observable.cityId;
+  }
+
 }
 
 

@@ -5,7 +5,7 @@
 
     <ul class="search-result">
         <li *ngFor="let observable of observables | async">
-            <a [routerLink]="route + observable.cityId">
+            <a [routerLink]="route + getId(observable)">
                 {{getDisplayName(observable)}}
             </a>
         </li>

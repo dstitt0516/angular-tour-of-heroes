@@ -1,5 +1,3 @@
-import { AsyncPipe, NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 import { Hero } from '../hero';
