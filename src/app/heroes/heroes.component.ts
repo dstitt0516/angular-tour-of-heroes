@@ -22,7 +22,7 @@ import { Base } from '../base';
 export class HeroesComponent implements OnInit {
   
   hero: Hero | undefined;
-  city = { cityid: 2 };
+  city = { cityid: 1, name: 'Altoona' };
   heroes: Hero[] = [];
   cities: City[] = [];
 

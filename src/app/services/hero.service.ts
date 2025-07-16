@@ -10,8 +10,8 @@ import { environment } from '../../environments/environment.development';
 
 export class HeroService {
 
-  private heroesURL = `${environment.apiBaseURL}/api/HeroItems`;
-  private heroesSearchURL = `${environment.apiBaseURL}/api/HeroSearchItems`;
+  private heroesURL = `${environment.apiBaseURL}/api/Hero`;
+  private heroesSearchURL = `${environment.apiBaseURL}/api/HeroSearch`;
   httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

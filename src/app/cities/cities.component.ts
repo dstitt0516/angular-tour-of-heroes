@@ -33,6 +33,7 @@ export class CitiesComponent implements OnInit {
     if (
       typeof name !== 'string' || 
       name.length < 1 ||
+      name.length > 10 ||
       this.cities.some(city => city.name.toLowerCase() === name.toLowerCase())
     ) { 
       return;

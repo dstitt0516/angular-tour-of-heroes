@@ -11,8 +11,8 @@ import { environment } from '../../environments/environment.development';
 })
 export class CityService {
 
-  private citiesURL = `${environment.apiBaseURL}/api/CityItems`;
-  private citiesSearchURL = `${environment.apiBaseURL}/api/CitySearchItems`;
+  private citiesURL = `${environment.apiBaseURL}/api/City`;
+  private citiesSearchURL = `${environment.apiBaseURL}/api/CitySearch`;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -78,9 +78,9 @@ export class CityService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a CityService message with the MessageService */
 
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`CityService: ${message}`);
   }
 }
