@@ -63,7 +63,7 @@ export class CityService {
   addCity(city: City): Observable<City> {
     return this.http.post<City>(this.citiesURL, city, this.httpOptions)
       .pipe(
-        tap((newCity: City) => this.log(`added city with id=${newCity.cityId}`)),
+        tap((newCity: City) => this.log(`added city with id=${newCity.id}`)),
         catchError(this.handleError<City>('addCity'))
       );
   }

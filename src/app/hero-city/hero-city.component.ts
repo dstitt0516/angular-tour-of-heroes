@@ -51,7 +51,7 @@ export class HeroCityComponent implements OnInit {
   }
 
   getCityName() {
-    const city = this.cities.find(city => Number(city.cityId) === this.cityId);
+    const city = this.cities.find(city => Number(city.id) === this.cityId);
     
     return city;
   }

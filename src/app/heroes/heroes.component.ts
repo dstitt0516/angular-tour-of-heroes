@@ -9,6 +9,7 @@ import { CityService } from '../services/city.service';
 import { CitiesComponent } from "../cities/cities.component";
 import { GenericCityListComponent } from "../generic-city-list/generic-city-list.component";
 import { HeroApiService } from '../services/hero-api.service';
+import { Base } from '../base';
 
 
 @Component({
@@ -45,16 +46,16 @@ export class HeroesComponent implements OnInit {
     this.cityService.$cities.subscribe(cities => this.cities = cities);
   }
 
-  addHero(name: string, cityId: number): void {
+  addHero(name: string, id: number): void {
     if (typeof name !== 'string' || name.length < 1 || name.length > 10) { 
       return;
     }
 
     name = name.charAt(0).toUpperCase() + name.slice(1);
-    const matchedCity = this.cities.find(city => Number(city.cityId) === Number(cityId));
-    const city = matchedCity?.city ?? '';
+    const matchedCity = this.cities.find(city => Number(city.id) === Number(id));
+    const city = matchedCity?.name ?? '';
     
-    this.heroService.addHero({ name, city, cityId } as Hero)
+    this.heroService.addHero({ name, city, cityId: id } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
         this.getHeroes();

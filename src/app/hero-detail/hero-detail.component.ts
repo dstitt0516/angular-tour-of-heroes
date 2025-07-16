@@ -41,6 +41,7 @@ export class HeroDetailComponent implements OnInit {
       .subscribe((hero)=> {
         this.hero = hero 
         this.cityService.getCity(hero.cityId).subscribe(city => this.city = city);
+
       });
   }
 
@@ -56,13 +57,16 @@ export class HeroDetailComponent implements OnInit {
     if (
       typeof this.hero === 'object' && 
       typeof this.hero.id === 'number' && 
-      typeof this.hero.name === 'string' && 
+      typeof this.hero.name === 'string' &&
+      typeof this.hero.cityId === 'number' && 
+      typeof this.hero.city === 'string' && 
       this.hero !== null &&
       this.hero.name.length <= 10 &&
       this.hero.name.length > 0
     ) {
       this.hero.name = this.hero.name.charAt(0).toUpperCase() + this.hero.name.slice(1);
-
+      const matchedCity = this.cities.find(city => Number(city.id) === Number(this.hero?.cityId));
+      this.hero.city = matchedCity?.name ?? '';
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
       }

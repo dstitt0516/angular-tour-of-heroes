@@ -1,4 +1,11 @@
-import { City } from "./city";
-import { Hero } from "./hero";
+export interface Base {
+    id: number;
+    name: string;
+}
 
-export type Base = Hero | City;
+export interface City extends Base {
+}
+
+export interface Hero extends Base {
+  cityid: number;
+}

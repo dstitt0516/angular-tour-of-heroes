@@ -13,11 +13,11 @@
 
 <ul class="cities">
   <li *ngFor="let city of cities">
-    <a routerLink="/heroesbycity/{{city.cityId}}">
+    <a routerLink="/heroesbycity/{{city.id}}">
       <span class="badge">
-        {{city.cityId}}
+        {{city.id}}
       </span>
-      {{city.city}}
+      {{city.name}}
     </a>
   </li>
 </ul>
