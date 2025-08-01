@@ -11,5 +11,6 @@ export const routes: Routes = [
   { path: 'cities', component: CitiesComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroesbycity/:id', component: HeroCityComponent }
+  { path: 'heroesbycity/:id', component: HeroCityComponent },
+  { path: '**', redirectTo: '/dashboard' }
 ];
